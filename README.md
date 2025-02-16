@@ -2,8 +2,6 @@
 
 (This was an AGI House Valentine's Hack)
 
----
-
 ![619_2x_shots_so](https://github.com/user-attachments/assets/79214ae7-935b-4698-8546-2dd89ef20425)
 Love Bubbles: Sleek, Easy, and Fun
 
