@@ -18,11 +18,10 @@
             background-color: #fdf2f8;
         }
 
-        .heart {
+        .falling-emoji {
             position: absolute;
             width: 30px;
             height: 30px;
-            color: #e11d48;
             font-size: 30px;
             animation: fall linear infinite;
         }
@@ -48,14 +47,14 @@
             
             <div class="bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
                 <div class="mb-6">
-                    <label for="prompt" class="block text-gray-700 text-sm font-bold mb-2">Enter your prompt:</label>
+                    <label for="prompt" class="block text-gray-700 text-sm font-bold mb-2">Enter Celebrity Name:</label>
                     <input type="text" id="prompt" 
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-500"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
                            placeholder="e.g., LeBron James">
                 </div>
                 
                 <button id="generateBtn" 
-                        class="w-full bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200">
+                        class="w-full bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-700 transition duration-200">
                     Generate Image
                 </button>
                 
@@ -65,9 +64,9 @@
                 </div>
                 
                 <div id="result" class="mt-6 hidden">
-                    <img id="generatedImage" class="w-full rounded-lg shadow-md" src="" alt="Generated image">
+                    <img id="generatedImage" class="w-full rounded-lg shadow-md pointer-events-none" src="" alt="Generated image">
                     <a id="downloadBtn" 
-                       class="block mt-4 text-center bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition duration-200"
+                       class="block mt-4 text-center bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-700 transition duration-200"
                        download="lebron-valentine.jpg">
                         Download Image
                     </a>
@@ -77,28 +76,36 @@
     </div>
 
     <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            heart.style.opacity = Math.random() * 0.5 + 0.5;
-            heart.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+        function createFallingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'falling-emoji';
             
-            document.getElementById('heartsContainer').appendChild(heart);
+            // Randomly choose between heart and star
+            const emojis = ['❤️', '⭐'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.innerHTML = randomEmoji;
+            
+            // Set color based on emoji type
+            emoji.style.color = randomEmoji === '❤️' ? '#e11d48' : '#fbbf24';
+            
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            emoji.style.opacity = Math.random() * 0.5 + 0.5;
+            emoji.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+            
+            document.getElementById('heartsContainer').appendChild(emoji);
 
-            heart.addEventListener('animationend', () => {
-                heart.remove();
+            emoji.addEventListener('animationend', () => {
+                emoji.remove();
             });
         }
 
-        // Create hearts more frequently
-        setInterval(createHeart, 200);
+        // Create emojis more frequently
+        setInterval(createFallingEmoji, 200);
 
-        // Create more initial hearts
+        // Create more initial emojis
         for (let i = 0; i < 15; i++) {
-            setTimeout(createHeart, Math.random() * 1000);
+            setTimeout(createFallingEmoji, Math.random() * 1000);
         }
     </script>
     <script src="/static/js/main.js"></script>

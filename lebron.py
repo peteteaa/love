@@ -1,6 +1,5 @@
 import requests
 import time
-import webbrowser
 import random
 from dotenv import load_dotenv
 import os
@@ -56,8 +55,6 @@ def generate_and_poll_image(prompt, api_key):
                     image_url = poll_data["result"]["sample"]
                     print(f"Image generated successfully: {image_url}")
 
-                    # Open the image in a browser
-                    webbrowser.open(image_url)
                     return image_url
                 else:
                     print("Image not ready yet, retrying in 3 seconds...")
