@@ -25,3 +25,7 @@ Fictional Characters Too!
 ---
 ![valentine-for-Sam_copy](https://github.com/user-attachments/assets/01230110-c317-4e43-b057-aa53c76887bd)
 Cute Animals!
+
+
+---
+Corny and Cute Fun for All
