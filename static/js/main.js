@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generateBtn');
     const promptInput = document.getElementById('prompt');
+    const recipientInput = document.getElementById('recipient');
     const statusDiv = document.getElementById('status');
     const resultDiv = document.getElementById('result');
     const generatedImage = document.getElementById('generatedImage');
@@ -8,8 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     generateBtn.addEventListener('click', async () => {
         const prompt = promptInput.value.trim();
+        const recipient = recipientInput.value.trim();
+        
         if (!prompt) {
-            alert('Please enter a prompt');
+            alert('Please enter a celebrity name');
+            return;
+        }
+
+        if (!recipient) {
+            alert('Please enter a recipient name');
             return;
         }
 
@@ -25,18 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ prompt: prompt + " holding a Happy Valentine's Day sign in a collage" })
+                body: JSON.stringify({ 
+                    prompt: prompt + " holding a Happy Valentine's Day sign in a collage",
+                    recipient: recipient
+                })
             });
 
             if (!response.ok) {
                 throw new Error('Failed to generate image');
             }
 
-            const data = await response.json();
+            // Get the image blob
+            const imageBlob = await response.blob();
+            const imageUrl = URL.createObjectURL(imageBlob);
             
             // Display the generated image
-            generatedImage.src = data.image_url;
-            downloadBtn.href = data.image_url;
+            generatedImage.src = imageUrl;
+            downloadBtn.href = imageUrl;
+            downloadBtn.download = `valentine-for-${recipient}.jpg`;
             
             // Prevent image from opening in new tab when loaded
             generatedImage.addEventListener('load', (e) => {
