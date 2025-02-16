@@ -38,9 +38,9 @@ Py backend + JS front
 
 To run, add a .env file and insert your API_KEY:"{API_KEY_HERE}" for Black Forest Labs
 
-Make sure requirements are installed through pip intall -r /path/to/requirements.txt
+Make sure requirements are installed through pip install -r /path/to/requirements.txt
 
-Run with python3 app.py
+Run with "python3 app.py" through terminal
 
 Our hack runs on Black Forest Lab's Flux 1.1 Ultra model, and is tailored towards generation of Valentine's day cards in the style of a collage
 
