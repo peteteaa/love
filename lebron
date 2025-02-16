@@ -1,10 +1,10 @@
 import requests
 import time
 import webbrowser
-
+import random
 def generate_and_poll_image(prompt, api_key):
     # API URLs
-    generate_url = "https://api.bfl.ai/v1/flux-pro-1.1"
+    generate_url = "https://api.bfl.ai/v1/flux-pro-1.1-ultra"
     
     # Initial payload
     payload = {
@@ -12,7 +12,8 @@ def generate_and_poll_image(prompt, api_key):
         "width": 1024,
         "height": 768,
         "prompt_upsampling": False,
-        "seed": 42,
+        "seed": random.randint(1,50),
+
         "safety_tolerance": 2,
         "output_format": "jpeg"
     }
@@ -68,7 +69,7 @@ def generate_and_poll_image(prompt, api_key):
 if __name__ == "__main__":
     s= input("lebronnnn")
     api_key = "76123e91-f7af-4beb-9aed-24c279ce4916"  # Replace with your API key
-    prompt = s+ " holding a Happy Valentine's Day sign"
+    prompt = s+ " holding a Happy Valentine's Day sign in a collage"
     
     final_image_url = generate_and_poll_image(prompt, api_key)
     
