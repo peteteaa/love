@@ -28,4 +28,19 @@ Cute Animals!
 
 
 ---
-Corny and Cute Fun for All
+Corny and Cute Fun for All!
+
+
+
+
+---
+
+To run, add a .env file and insert your API_KEY:"{API_KEY_HERE}" for Black Forest Labs
+
+Make sure requirements are installed through pip intall -r /path/to/requirements.txt
+
+Run with python3 app.py
+
+Our hack runs on Black Forest Lab's Flux 1.1 Ultra model, and is tailored towards generation of Valentine's day cards in the style of a collage
+
+Python backend + javascript frontend
