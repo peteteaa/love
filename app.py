@@ -1,8 +1,15 @@
 from flask import Flask, render_template, request, jsonify
 from lebron import generate_and_poll_image
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
-API_KEY = "76123e91-f7af-4beb-9aed-24c279ce4916"  # Your API key
+
+# Fetch API_KEY from environment variables
+API_KEY = os.getenv("API_KEY")
 
 @app.route('/')
 def index():
@@ -17,6 +24,7 @@ def generate():
         return jsonify({'error': 'No prompt provided'}), 400
     
     try:
+        # Generate image URL using the API key and prompt
         image_url = generate_and_poll_image(prompt, API_KEY)
         if image_url:
             return jsonify({'image_url': image_url})
@@ -26,4 +34,7 @@ def generate():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if not API_KEY:
+        print("Error: API key is missing. Ensure the .env file contains 'API_KEY'.")
+    else:
+        app.run(debug=True)
