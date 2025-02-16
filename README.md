@@ -1,6 +1,6 @@
 # Love Bubbles
 
-(This was an AGI House Valentine's Hack)
+(This was an AGI House Valentine's Hack & Windsurf Special Prize Third Place Winner 🥉)
 
 ![619_2x_shots_so](https://github.com/user-attachments/assets/79214ae7-935b-4698-8546-2dd89ef20425)
 Love Bubbles: Sleek, Easy, and Fun
@@ -34,6 +34,7 @@ Corny and Cute Fun for All!
 
 
 ---
+Py backend + JS front
 
 To run, add a .env file and insert your API_KEY:"{API_KEY_HERE}" for Black Forest Labs
 
@@ -43,4 +44,5 @@ Run with python3 app.py
 
 Our hack runs on Black Forest Lab's Flux 1.1 Ultra model, and is tailored towards generation of Valentine's day cards in the style of a collage
 
-Python backend + javascript frontend
+Built with help from Codeium's Windsurf IDE
+
