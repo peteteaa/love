@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
             generatedImage.src = data.image_url;
             downloadBtn.href = data.image_url;
             
+            // Prevent image from opening in new tab when loaded
+            generatedImage.addEventListener('load', (e) => {
+                e.preventDefault();
+            });
+            
             // Show the result
             resultDiv.classList.remove('hidden');
         } catch (error) {
