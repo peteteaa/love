@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeBron Valentine Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 50%, #f9a8d4 100%);
+        }
+
+        .falling-emoji {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            font-size: 30px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10%) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .text-shadow-lg {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .title-stroke {
+            font-size: 5rem;
+            color: #f9a8d4;
+            -webkit-text-stroke: 2px #dc2626;
+            text-stroke: 2px #dc2626;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+            white-space: nowrap;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.1),
+                0 0 8px rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <div class="container mx-auto px-4 py-8 relative">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="title-stroke text-center mb-8">🧸 Love Bubbles 🧸</h1>
+            
+            <div class="bg-opacity-40 backdrop-blur-md shadow-xl rounded-lg p-6 transition-all duration-300 hover:bg-white hover:bg-opacity-90 hover:backdrop-blur-none">
+                <div class="mb-6">
+                    <label for="prompt" class="block text-gray-700 text-sm font-bold mb-2">Enter Celebrity Name:</label>
+                    <input type="text" id="prompt" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
+                           placeholder="e.g., LeBron James">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="recipient" class="block text-gray-700 text-sm font-bold mb-2">To: (Recipient's Name)</label>
+                    <input type="text" id="recipient" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
+                           placeholder="e.g., Sarah">
+                </div>
+                
+                <button id="generateBtn" 
+                        class="w-full bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-700 transition duration-200">
+                    Generate Image
+                </button>
+                
+                <div id="status" class="mt-4 text-center hidden">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-600 mx-auto"></div>
+                    <p class="text-gray-600 mt-2">Generating your image...</p>
+                </div>
+                
+                <div id="result" class="mt-6 hidden">
+                    <img id="generatedImage" class="w-full rounded-lg shadow-md pointer-events-none" src="" alt="Generated image">
+                    <a id="downloadBtn" 
+                       class="block mt-4 text-center bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-700 transition duration-200"
+                       download="lebron-valentine.jpg">
+                        Download Image
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createFallingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'falling-emoji';
+            
+            // Randomly choose between heart and star
+            const emojis = ['❤️', '⭐'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.innerHTML = randomEmoji;
+            
+            // Set color based on emoji type
+            emoji.style.color = randomEmoji === '❤️' ? '#e11d48' : '#fbbf24';
+            
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            emoji.style.opacity = Math.random() * 0.5 + 0.5;
+            emoji.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+            
+            document.getElementById('heartsContainer').appendChild(emoji);
+
+            emoji.addEventListener('animationend', () => {
+                emoji.remove();
+            });
+        }
+
+        // Create emojis more frequently
+        setInterval(createFallingEmoji, 200);
+
+        // Create more initial emojis
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createFallingEmoji, Math.random() * 1000);
+        }
+    </script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

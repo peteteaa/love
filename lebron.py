@@ -1,6 +1,5 @@
 import requests
 import time
-import webbrowser
 import random
 from dotenv import load_dotenv
 import os
@@ -18,7 +17,7 @@ def generate_and_poll_image(prompt, api_key):
         "width": 1024,
         "height": 768,
         "prompt_upsampling": False,
-        "seed": random.randint(1, 50),
+        "seed": random.randint(1,50),
         "safety_tolerance": 2,
         "output_format": "jpeg"
     }
@@ -56,8 +55,6 @@ def generate_and_poll_image(prompt, api_key):
                     image_url = poll_data["result"]["sample"]
                     print(f"Image generated successfully: {image_url}")
 
-                    # Open the image in a browser
-                    webbrowser.open(image_url)
                     return image_url
                 else:
                     print("Image not ready yet, retrying in 3 seconds...")
@@ -72,13 +69,15 @@ def generate_and_poll_image(prompt, api_key):
 
 # Example usage
 if __name__ == "__main__":
-    s = input("lebronnnn")  # Example input
-    api_key = os.getenv("API_KEY")  # Fetch the API key from .env
-
+    # Fetch the API_KEY from environment variables
+    api_key = os.getenv("API_KEY")
+    
     if not api_key:
-        print("API key is missing. Make sure it's in your .env file.")
+        print("API key not found in .env file. Please ensure .env file contains 'API_KEY'.")
     else:
+        s = input("Enter prompt for image generation: ")
         prompt = s + " holding a Happy Valentine's Day sign in a collage"
+        
         final_image_url = generate_and_poll_image(prompt, api_key)
         
         if final_image_url:
