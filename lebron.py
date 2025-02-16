@@ -2,6 +2,12 @@ import requests
 import time
 import webbrowser
 import random
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
 def generate_and_poll_image(prompt, api_key):
     # API URLs
     generate_url = "https://api.bfl.ai/v1/flux-pro-1.1-ultra"
@@ -13,7 +19,6 @@ def generate_and_poll_image(prompt, api_key):
         "height": 768,
         "prompt_upsampling": False,
         "seed": random.randint(1,50),
-
         "safety_tolerance": 2,
         "output_format": "jpeg"
     }
@@ -67,18 +72,23 @@ def generate_and_poll_image(prompt, api_key):
 
 # Example usage
 if __name__ == "__main__":
-    s= input("lebronnnn")
-    api_key = "76123e91-f7af-4beb-9aed-24c279ce4916"  # Replace with your API key
-    prompt = s+ " holding a Happy Valentine's Day sign in a collage"
+    # Fetch the API_KEY from environment variables
+    api_key = os.getenv("API_KEY")
     
-    final_image_url = generate_and_poll_image(prompt, api_key)
-    
-    if final_image_url:
-        print(f"Final image URL: {final_image_url}")
+    if not api_key:
+        print("API key not found in .env file. Please ensure .env file contains 'API_KEY'.")
+    else:
+        s = input("Enter prompt for image generation: ")
+        prompt = s + " holding a Happy Valentine's Day sign in a collage"
         
-        # Download the image
-        image_response = requests.get(final_image_url)
-        if image_response.status_code == 200:
-            with open("generated_image.jpg", "wb") as f:
-                f.write(image_response.content)
-            print("Image saved as 'generated_image.jpg'")
+        final_image_url = generate_and_poll_image(prompt, api_key)
+        
+        if final_image_url:
+            print(f"Final image URL: {final_image_url}")
+            
+            # Download the image
+            image_response = requests.get(final_image_url)
+            if image_response.status_code == 200:
+                with open("generated_image.jpg", "wb") as f:
+                    f.write(image_response.content)
+                print("Image saved as 'generated_image.jpg'")
