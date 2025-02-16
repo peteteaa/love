@@ -15,7 +15,7 @@
             overflow: hidden;
             z-index: -1;
             pointer-events: none;
-            background-color: #fdf2f8;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 50%, #f9a8d4 100%);
         }
 
         .falling-emoji {
@@ -36,6 +36,28 @@
                 opacity: 0;
             }
         }
+
+        .text-shadow-lg {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .title-stroke {
+            font-size: 5rem;
+            color: #f9a8d4;
+            -webkit-text-stroke: 2px #dc2626;
+            text-stroke: 2px #dc2626;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+            white-space: nowrap;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.1),
+                0 0 8px rgba(255, 255, 255, 0.6);
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -43,9 +65,9 @@
     
     <div class="container mx-auto px-4 py-8 relative">
         <div class="max-w-2xl mx-auto">
-            <h1 class="text-4xl font-bold text-center mb-8 text-red-600">Love Bubbles</h1>
+            <h1 class="title-stroke text-center mb-8">🧸 Love Bubbles 🧸</h1>
             
-            <div class="bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
+            <div class="bg-opacity-40 backdrop-blur-md shadow-xl rounded-lg p-6 transition-all duration-300 hover:bg-white hover:bg-opacity-90 hover:backdrop-blur-none">
                 <div class="mb-6">
                     <label for="prompt" class="block text-gray-700 text-sm font-bold mb-2">Enter Celebrity Name:</label>
                     <input type="text" id="prompt" 
