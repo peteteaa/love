@@ -66,8 +66,9 @@ def generate_and_poll_image(prompt, api_key):
 
 # Example usage
 if __name__ == "__main__":
+    s= input("lebronnnn")
     api_key = "76123e91-f7af-4beb-9aed-24c279ce4916"  # Replace with your API key
-    prompt = "Taylor swift and kanye angrily holding a Happy Valentine's Day sign"
+    prompt = s+ " holding a Happy Valentine's Day sign"
     
     final_image_url = generate_and_poll_image(prompt, api_key)
     
