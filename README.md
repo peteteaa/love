@@ -1,11 +1,11 @@
-# Love Bubbles
+![619_2x_shots_so](https://github.com/user-attachments/assets/9b97d6c7-bf9c-4142-85f8-d6adb876988e)# Love Bubbles
 
-(This was a AGI House Valentine Hack)
+(This was an AGI House Valentine's Hack)
 
 ---
 
-![alt text](https://bashify.io/img/5b3d5d1c94aac4cbd45cf40e35d44f4c)
+![619_2x_shots_so](https://github.com/user-attachments/assets/79214ae7-935b-4698-8546-2dd89ef20425)
 Love Bubbles: Sleek, Easy, and Fun
 
-![alt text](https://i.postimg.cc/prMwVJYp/temp-Imagee-CC3lo.avif)
+
 Infinite Celebrity Possibilities, at your fingertips
